@@ -1,0 +1,11 @@
+{
+  "name": "discordbridge",
+  "version": "1.0.0",
+  "description": "bot half of the DiscordBridge plugin",
+  "main": "index.js",
+  "author": "by77er",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}

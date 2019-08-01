@@ -1,0 +1,7 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    compile files('libs/spigot-api-1.14.4.jar')
+}

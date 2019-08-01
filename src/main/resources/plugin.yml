@@ -1,0 +1,10 @@
+name: DiscordBridge
+version: 1.0.0
+author: by77er
+main: com.by77er.discordbridge.Bridge
+api-version: 1.14
+website: https://by77er.github.io
+commands:
+      bittest:
+               description: just a ping test
+               usage: /bittest
