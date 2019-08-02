@@ -4,8 +4,8 @@ This Spigot / Bukkit plugin + Discord bot combination allows you to bridge chat 
 ## To build this plugin, follow these steps:
 * Grab the project:
     ```bash
-    git clone <tbd>
-    cd <tbd>
+    git clone DiscordBridge
+    cd DiscordBridge
     ```
 * Download the latest Spigot API `.jar` and place it in `libs/`
 * Modify `build.gradle`'s `compile files('libs/spigot-api-X.jar')` line to reflect the filename of the library you downloaded.
@@ -21,5 +21,6 @@ This Spigot / Bukkit plugin + Discord bot combination allows you to bridge chat 
     cd js
     npm install
     ```
-* Set the `bot_token` variable in `index.js` with your token.
+* Export the `DSBTOKEN` environment variable with your token.
+* Set the name of the channel you'd like to receive message events from in `index.js`.
 * Run `node index.js` and follow the setup procedure.
