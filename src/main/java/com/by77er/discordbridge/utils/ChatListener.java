@@ -7,9 +7,19 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
 
 import org.bukkit.event.Listener;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
+/*
+
+This class sends the following events to the configured webhook:
+    - Player chat events
+    - Player join / leave events
+
+*/
 public class ChatListener implements Listener {
     HttpClient httpclient;
     String webhookURL;
@@ -17,13 +27,33 @@ public class ChatListener implements Listener {
         this.webhookURL = webhookURL;
         this.httpclient = HttpClient.newHttpClient();
     }
+
+    @EventHandler 
+    public void onPlayerJoined(PlayerJoinEvent event) {
+        String username = "Server";
+        ChatColor.stripColor(event.getJoinMessage());
+        String message = ChatColor.stripColor(event.getJoinMessage());
+        this.sendHookMessage(username, message);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        String username = "Server";
+        String message = ChatColor.stripColor(event.getQuitMessage());
+        this.sendHookMessage(username, message);
+    }
+
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         // Fired for each player chat message
-        // Just sends the message to the webhook
         // TODO: Player skin icons
-        String username = event.getPlayer().getDisplayName();
-        String message = event.getMessage();
+        String username = ChatColor.stripColor(event.getPlayer().getDisplayName());
+        String message = ChatColor.stripColor(event.getMessage());
+        this.sendHookMessage(username, message);
+    }
+
+    // Created separate function
+    private void sendHookMessage(String username, String message) {
         try {
             HttpRequest request = HttpRequest
                 .newBuilder(new URI(this.webhookURL))
