@@ -13,7 +13,7 @@ This Spigot / Bukkit plugin + Discord bot combination allows you to bridge chat 
     ```bash
     ./gradlew build
     ```
-* Grab the `.jar` from `builds/libs/<name>.jar` and put it in your server's `plugins` directory.
+* Grab the `.jar` from `builds/libs/DiscordBridge.jar` and put it in your server's `plugins` directory.
 
 ### After you've done the steps above, you'll need to do the following to run the bot:
 * Run the following commands:

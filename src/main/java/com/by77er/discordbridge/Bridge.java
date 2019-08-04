@@ -10,8 +10,8 @@ public class Bridge extends JavaPlugin {
     @Override
     public void onEnable() {
         // fired when plugin is enabled / server starts
-        getCommand("bittest").setExecutor(new BitTest());
-        System.out.println("Hello, world!");
+        // getCommand("bittest").setExecutor(new BitTest());
+        System.out.println("Hello, Minecraft!");
 
         FileConfiguration config = this.getConfig();
         config.addDefault("webhook-url", "");
