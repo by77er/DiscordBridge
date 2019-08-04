@@ -11,7 +11,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -69,7 +68,7 @@ public class ChatListener implements Listener {
                 .POST(BodyPublishers.ofString(""
                 + "{"
                 + " \"username\": \"" + username + "\","
-                + " \"content\": \"" + message + "\""
+                + " \"content\": \"" + message.replace("\\", "\\\\").replace("\"", "\\\"") + "\""
                 + "}"))
                 .build();
             // send request
