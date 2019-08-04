@@ -7,9 +7,11 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpRequest.BodyPublishers;
 
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -49,6 +51,12 @@ public class ChatListener implements Listener {
         // TODO: Player skin icons
         String username = ChatColor.stripColor(event.getPlayer().getDisplayName());
         String message = ChatColor.stripColor(event.getMessage());
+        this.sendHookMessage(username, message);
+    }
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        String username = "Server";
+        String message = ChatColor.stripColor(event.getDeathMessage());
         this.sendHookMessage(username, message);
     }
 
